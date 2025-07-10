@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Диаграмма Ганта</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 20px;
+        }
+        .form-container {
+            width: 300px;
+            margin-right: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        details {
+            background-color: #333;
+            padding: 10px;
+            border: 1px solid #555;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        label {
+            display: block;
+            margin: 2px 0;
+        }
+        button {
+            background-color: #444;
+            color: white;
+            border: 1px solid #888;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #666;
+        }
+        .plot-container img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<h1>Загруженность сотрудников</h1>
+
+<div class="container">
+    <div class="form-container">
+        <form method="get">
+            <details>
+                <summary>Выбрать сотрудников</summary>
+                {% for emp in employees %}
+                <label>
+                    <input type="checkbox" name="employees" value="{{ emp }}" {% if emp in selected_employees %}checked{% endif %}>
+                    {{ emp }}
+                </label>
+                {% endfor %}
+            </details>
+
+            <details>
+                <summary>Выбрать проекты</summary>
+                {% for proj in projects %}
+                <label>
+                    <input type="checkbox" name="projects" value="{{ proj }}" {% if proj in selected_projects %}checked{% endif %}>
+                    {{ proj }}
+                </label>
+                {% endfor %}
+            </details>
+
+
+            <button type="submit">Применить фильтр</button>
+        </form>
+    </div>
+
+    <div class="plot-container">
+        <img src="{{ url_for('static', filename='plot.png') }}" alt="Диаграмма Ганта">
+    </div>
+</div>
+</body>
+</html>

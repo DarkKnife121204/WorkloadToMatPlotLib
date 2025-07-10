@@ -1,23 +1,23 @@
-# Workload
+# WorkloadToMatPlotLib
 
 Система визуализации загруженности сотрудников
 
 ## Возможности
 
 - Импорт данных из JSON 
-- Визуализация в виде диаграммы Ганта (Plotly)
+- Визуализация в виде диаграммы Ганта (matplotlib)
 - Фильтрация по проектам и сотрудникам
 - Подсветка перегрузок
 - Поддержка событий:
     - Назначения
     - Отпуск
     - Переработка
-- Интерактивный веб-интерфейс (Dash)
+- Интерактивный веб-интерфейс (flask)
 
 ## Установка и использование
 ```bash
-git clone https://github.com/DarkKnife121204/Workload
-cd Workload
+git clone https://github.com/DarkKnife121204/WorkloadToMatPlotLib
+cd WorkloadToMatPlotLib
 pip install -r requirements.txt
 python main.py
 ```
@@ -50,17 +50,9 @@ python main.py
 }
 ```
 
-## Тестирование
-
-Для запуска тестов выполните команду:
-
-```bash
-pytest tests/
-```
 ## Стек 
 
 - **Язык программирования:** Python 
-- **Визуализация:** Plotly, Dash
+- **Визуализация:** matplotlib, flask
 - **Обработка данных:** pandas
 - **Форматы входных данных:** JSON
-- **Тестирование:** pytest

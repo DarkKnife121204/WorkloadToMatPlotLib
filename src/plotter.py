@@ -1,10 +1,10 @@
-import matplotlib
-
-matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import pandas as pd
 import itertools
+import matplotlib
+import os
+matplotlib.use("Agg")
 
 
 # выбор уровня при перегрузке
@@ -126,7 +126,6 @@ def plot(df):
     ax.set_yticks(yticks)
     ax.set_yticklabels(yticklabels)
     ax.xaxis_date()
-    ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %d'))
     plt.xticks(rotation=45)
 
     ax.set_xlabel("Дата")
@@ -149,4 +148,6 @@ def plot(df):
     )
 
     plt.tight_layout()
-    plt.show()
+    os.makedirs("static", exist_ok=True)
+    plt.savefig("static/plot.png", bbox_inches='tight')
+    plt.close()
